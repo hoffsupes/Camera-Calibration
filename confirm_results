@@ -1,0 +1,10 @@
+clc;
+clear all;
+close all;
+
+P = get_projection_linear(X,c);
+O = P * [Xbad; ones(1,length(Xbad))];
+O = O ./ O(3,:);
+O(3,:) = [];
+
+outliers = find(sqrt(sum((O-c).^2)) > 3)
